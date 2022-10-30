@@ -8,10 +8,11 @@
 Randon Network는 이름에서 추론 가능하듯이, 각 node간의 link가 random하게 연결되는 network를 말합니다. 수학적으로 표현하기 위해 $G(n,p)$라는 이름을 붙이도록 하겠습니다. $n$은 network의 node 수 이며, $p$는 link가 생성될 확률입니다. $G(n,p)$는 단일 graph에 대한 표현이 아니라 **ensemble**로써의 표현임을 명심해주시기 바랍니다.
 
 위 표현에 의해 $G(n,p)$는 다음과 같은 이항분포로 나타납니다
+
 $$
 \begin{aligned}
 	P(G)
-		=	p^m{(1-p)}^{{n \choose 2}-m}	\tag1
+		=	p^m{(1-p)}^{{n \choose 2}-m}
 \end{aligned}
 $$
 
@@ -21,40 +22,46 @@ $$
 Mean degree란 말그대로 degree의 평균을 뜻하며, 좀 더 풀어서 설명하자면, 어떤 node를 선택 했을때 이 node가 갖고 있을 link의 수 $k$(*를 degree라 부릅니다*)의 기댓값입니다. 후술하겠지만 $\left\langle k \right\rangle$는 link가 형성될 확률 확률 $p$와 밀접한 관련이 있습니다. 
 
 우선 특정 $n$에 대해서 random network가 $m$개의 link를 가질 확률을 생각해보도록 하겠습니다.  이는 ensemble이 나타날 확률과 그 ensemble이 가지는 microstate의 가짓수를 생각하면 쉽게 구할 수 있습니다.
+
 $$
 \begin{aligned}
 	P(m)
 		&=	{{n \choose 2} \choose m}P(G)\\
 		&=	{{n \choose 2} \choose m}p^m{(1-p)}^{{n \choose 2}-m}\\
-		&\sim	B\left({n \choose 2},p\right)	\tag2
+		&\sim	B\left({n \choose 2},p\right)
 \end{aligned}
 $$
+
 단순한 이항분포이므로 link수의 평균 또한 쉽게 구할 수 있습니다.
+
 $$
 \begin{aligned}
 	\left\langle m \right\rangle
 		&=	{n \choose 2}p
-		&=	\frac{n(n-1)p}{2}	\tag3
+		&=	\frac{n(n-1)p}{2}
 \end{aligned}
 $$
 
 이제 mean degree의 정의를 잘 생각해보면 $\left\langle k \right\rangle = 2m/n$ 이라는 것을 알 수 있습니다. 즉, 식 (3)에 의해 우리는 다음과 같은 결론을 얻을 수 있습니다.
+
 $$
 \begin{aligned}
 	\left\langle k \right\rangle
-		&=	(n-1)p	\tag4
+		&=	(n-1)p
 \end{aligned}
 $$
 
 ### Degree Distribution
 Mean degree를 구했으니 이제 degree의 분포에 대해 알아보도록 하겠습니다. $p_k$는 $P(m)$을 구할때와 마찬가지로, 특정 node에 대해 자기자신을 제외한 $n-1$개의 node에 link를 연결할 확률이므로 다음과 같이 표현 가능합니다.
+
 $$
 \begin{aligned}
 	p_k
 		&\sim	B(n-1, p)\\
-		&=	{n-1\choose k}p^k{(1-p)}^{(n-1)-k} \tag5
+		&=	{n-1\choose k}p^k{(1-p)}^{(n-1)-k}
 \end{aligned}
 $$
+
 저희 교수님께선 이런 말씀을 하셨습니다. 
 
 **"물리학자는 $n=1, 2, \infty$ 일때밖에 계산을 못한다."**
@@ -63,22 +70,22 @@ Network를 형성한다는 것은 **많은 것**에 대해 관심이 있다는 �
 
 식 (4)에 의해서 우리는 $p$를 $\left\langle k \right\rangle$로 나타낼 수 있다는 것을 알아냈습니다. 이를 이용하여 식 (5)의 ${(1-p)}^{(n-1)-k}$를 근사시키고자 합니다.
 
-
 $$
 \begin{aligned}
 	\ln[{(1-p)}^{(n-1)-k}]
 		&= [(n-1)-k]\ln[{(1-\frac{\left\langle k \right\rangle}{n-1})}]\\
 		&\simeq	-[(n-1)-k]\frac{\left\langle k \right\rangle}{n-1}\\
-		&\simeq	-\left\langle k \right\rangle \tag 6
+		&\simeq	-\left\langle k \right\rangle
 \end{aligned}
 $$
 
 첫번째 근사는 Talyor Expansion을 통해 넘어갔으며, 두번째 근사는 $n\to\infty$ 이므로 $k$를 무시하였습니다. 마찬가지 방법으로 식(5)의 이항분포를 근사시키도록 하겠습니다.
+
 $$
 \begin{aligned}
 	{n-1\choose k}
 		&= \frac{(n-1)!}{(n-1-k)!k!}\\
-		&\simeq \frac{(n-1)^k}{k!}\tag 7
+		&\simeq \frac{(n-1)^k}{k!}
 \end{aligned}
 $$
 
@@ -89,7 +96,7 @@ $$
 	p_k
 		&=	{n-1\choose k}p^k{(1-p)}^{(n-1)-k} \\
 		&=	\frac{(n-1)^k}{k!} \left(\frac{\left\langle k \right\rangle}{n-1} \right)^k e^{-\left\langle k \right\rangle}\\
-		&=	e^{- \left\langle k \right\rangle}\frac{{\left\langle k \right\rangle}^k}{k!}\\ \tag8
+		&=	e^{- \left\langle k \right\rangle}\frac{{\left\langle k \right\rangle}^k}{k!}\\
 \end{aligned}
 $$
 
@@ -106,38 +113,46 @@ Network 위에서 어떤 interaction을 하는가에 따라 상황에 따라서 
 (b)의 경우에는 연결 되어있으나($p$), 연결된 node가 GC가 아니므로($u$) $pu$의 확률을 가집니다.
 
 즉, node $i$가 하나의 node에 대해서 GC인지 확인했을때, $i$가 GC가 아닐 확률은 $1-p+pu$입니다. 그러나 $i$를 제외한 node는 $n-1$개이므로, 이 과정을 $n-1$번 거쳐야합니다. 위 과정을 통해 우리는 다음과 같은 결과를 얻습니다.
+
 $$
 \begin{aligned}
 	u
 		&=	(1-p+pu)^{n-1}
-		&=	\left[1-\frac{\left\langle k \right\rangle}{n-1} (1-u)\right]^{n-1} \tag9
+		&=	\left[1-\frac{\left\langle k \right\rangle}{n-1} (1-u)\right]^{n-1}
 \end{aligned}
 $$
 
 이번에도 로그함수의 taylor expansion을 이용합시다
+
 $$
 \begin{aligned}
 	\ln u
 		&=	(n-1)\left[1-\frac{\left\langle k \right\rangle}{n-1} (1-u)\right]\\
 		&\simeq -(n-1)\frac{\left\langle k \right\rangle}{n-1}(1-u)\\
-		&=	-\left\langle k \right\rangle (1-u) \tag{10}
+		&=	-\left\langle k \right\rangle (1-u)
 \end{aligned}
 $$
+
 그러면 다음과 같은 식을 얻습니다.
+
 $$
 \begin{aligned}
 	u
-		&=	e^{-\left\langle k \right\rangle (1-u)}\tag{11}
+		&=	e^{-\left\langle k \right\rangle (1-u)}
 \end{aligned}
 $$
+
 이는 GC가 아닌 node의 비율이므로, GC인 node의 비율은 반대로 $1-u$, 즉
+
 $$
 \begin{aligned}
 	S
-		&=	1-e^{-\left\langle k \right\rangle S}\tag{12}
+		&=	1-e^{-\left\langle k \right\rangle S}
 \end{aligned}
 $$
+
 입니다. 아쉽게도 이 방정식은 analytic한 해가 존재하지 않습니다. 그러나 우리에겐 성능 좋은 컴퓨터가 존재합니다. 컴퓨터를 통해 풀어낸 해는 다음과 같습니다.
+
 ![Fig 1](./fig1.png "Fig 1")
 
 
