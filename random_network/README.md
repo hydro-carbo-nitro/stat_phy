@@ -10,7 +10,8 @@ Randon Network는 이름에서 추론 가능하듯이, 각 node간의 link가 ra
 위 표현에 의해 $G(n,p)$는 다음과 같은 이항분포로 나타납니다
 $$
 \begin{aligned}
-	P(G)		=	p^m{(1-p)}^{{n \choose 2}-m}	\tag1
+	P(G)
+		=	p^m{(1-p)}^{{n \choose 2}-m}	\tag1
 \end{aligned}
 $$
 
@@ -22,9 +23,10 @@ Mean degree란 말그대로 degree의 평균을 뜻하며, 좀 더 풀어서 설
 우선 특정 $n$에 대해서 random network가 $m$개의 link를 가질 확률을 생각해보도록 하겠습니다.  이는 ensemble이 나타날 확률과 그 ensemble이 가지는 microstate의 가짓수를 생각하면 쉽게 구할 수 있습니다.
 $$
 \begin{aligned}
-	P(m)	&=	{{n \choose 2} \choose m}P(G)\\
-				&=	{{n \choose 2} \choose m}p^m{(1-p)}^{{n \choose 2}-m}\\
-				&\sim	B\left({n \choose 2},p\right)	\tag2
+	P(m)
+		&=	{{n \choose 2} \choose m}P(G)\\
+		&=	{{n \choose 2} \choose m}p^m{(1-p)}^{{n \choose 2}-m}\\
+		&\sim	B\left({n \choose 2},p\right)	\tag2
 \end{aligned}
 $$
 단순한 이항분포이므로 link수의 평균 또한 쉽게 구할 수 있습니다.
@@ -48,8 +50,9 @@ $$
 Mean degree를 구했으니 이제 degree의 분포에 대해 알아보도록 하겠습니다. $p_k$는 $P(m)$을 구할때와 마찬가지로, 특정 node에 대해 자기자신을 제외한 $n-1$개의 node에 link를 연결할 확률이므로 다음과 같이 표현 가능합니다.
 $$
 \begin{aligned}
-	p_k		&\sim	B(n-1, p)\\
-				&=	{n-1\choose k}p^k{(1-p)}^{(n-1)-k} \tag5
+	p_k
+		&\sim	B(n-1, p)\\
+		&=	{n-1\choose k}p^k{(1-p)}^{(n-1)-k} \tag5
 \end{aligned}
 $$
 저희 교수님께선 이런 말씀을 하셨습니다. 
