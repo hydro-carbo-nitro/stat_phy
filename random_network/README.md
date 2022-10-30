@@ -135,7 +135,7 @@ $$
 \end{aligned}
 $$
 입니다. 아쉽게도 이 방정식은 analytic한 해가 존재하지 않습니다. 그러나 우리에겐 성능 좋은 컴퓨터가 존재합니다. 컴퓨터를 통해 풀어낸 해는 다음과 같습니다.
-![Fig 1](./fig 1.png "Fig 1")
+![Fig 1](./fig1.png "Fig 1")
 
 
 ## 코드 실행
@@ -144,9 +144,9 @@ Erdos Renyi Network를 생성합니다.  ./src/GEN_ER.c 를 컴파일하였습�
 
 - Input
 ```cpp
-int		N		=	atoi(argv[1]);	//	size of network
-double	k		=	atof(argv[2]);	//	mean degree of network
-int		nSample	=	atoi(argv[3]);	//	total number of samples
+int	N	=	atoi(argv[1]);	//	size of network
+double	k	=	atof(argv[2]);	//	mean degree of network
+int	nSample	=	atoi(argv[3]);	//	total number of samples
 ```
 
 - Output
@@ -178,9 +178,9 @@ Burning Algorithm을 통해 Erdos Renyi Network를 생성합니다.  ./src/GEN_E
 
 - Input
 ```cpp
-int		target_N	=	atoi(argv[1]);	//	size of network
+int	target_N	=	atoi(argv[1]);	//	size of network
 double	target_k	=	atof(argv[2]);	//	mean degree of network
-int		nSample		=	atoi(argv[3]);	//	total number of samples
+int	nSample		=	atoi(argv[3]);	//	total number of samples
 ```
 
 - Output
@@ -210,9 +210,9 @@ Burning Algorithm을 통해 생성된 Erdos Renyi Network의 $N_{GC}$과 $\left 
 
 - Input
 ```cpp
-int		N		=	atoi(argv[1]);	//	size of network
-double	k		=	atof(argv[2]);	//	mean degree of network
-int		nSample	=	atoi(argv[3]);	//	total number of samples
+int	N	=	atoi(argv[1]);	//	size of network
+double	k	=	atof(argv[2]);	//	mean degree of network
+int	nSample	=	atoi(argv[3]);	//	total number of samples
 ```
 
 - Output
